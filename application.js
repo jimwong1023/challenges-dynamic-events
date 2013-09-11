@@ -4,6 +4,20 @@ $(document).ready(function() {
   function bindEvents() {
     // Bind functions which add, remove, and complete todos to the appropriate
     // elements
+    $(".add").on('click', function(){
+      var todoName = $("input").val();
+      $(".todo_list").append(buildTodo(todoName));
+    })
+
+    $(document).on('click', '.delete', function(e){
+      e.preventDefault();
+      $(this).closest('.todo').remove();
+    })
+
+    $(document).on('click', '.complete', function(e){
+      e.preventDefault();
+      $(this).closest('.todo').addClass('complete');
+    })
   }
 
   //Create functions to add, remove and complete todos
